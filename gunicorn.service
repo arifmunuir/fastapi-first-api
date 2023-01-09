@@ -1,0 +1,13 @@
+[Unit]
+Description=demo fastapi application
+After=netweok.target
+
+[Service]
+User=arif
+Group=arif
+WorkingDirectory=/home/arif/app/src/
+Environment="PATH=/home/arif/app/venv/bin"
+ExecStart=gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+
+[Install]
+WantedBy=multi-user.target
